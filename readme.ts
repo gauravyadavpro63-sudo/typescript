@@ -124,7 +124,9 @@
 // Readonly<customer> ab properties ko sirf read kar sakte hai change nhi
 // obh2.name="mohan" (not allowed)
 
-
+// interface teacher extends customer{//this will now take propery of customer in teacher
+// school:string
+// }
 
 // array of object
 // interface people {name:string,age:number};
@@ -188,3 +190,86 @@
 // }
 // total(2,2,1,2,12,5)
 
+
+
+
+
+
+
+
+
+                            //   classes in ts
+
+// class person{
+//      name:string;
+//       age:number;
+
+//     constructor(n1:string,n2:number){
+//         this.name=n1;
+//         this.age=n2;
+//     }
+//     fun():void{
+//         console.log(this.name);
+//     }
+// }
+
+// const obj1=new  person("rohti",20);
+// console.log(obj1.fun());
+
+
+// public private protected
+
+// class customer{
+//    public name:string;//class ke bahr acces ho gayega
+//    private age:number;//only class ke andar only
+//    protected balance:number;//class ke andar and extended classes
+    
+//     constructor(name:string,age:number,balance:number){
+//         this.name=name;
+//         this.age=age;
+//         this.balance=balance;
+//     }
+// }
+// class customer2 extends customer{
+//     salary:number;
+//     constructor(salary:number,name:string,age:number,balance:number){
+//         super(name,age,balance);
+//         this.salary=salary;
+//     }
+// } 
+
+// const e1=new customer2(420,"rohit",20,222);
+
+
+// generics
+
+// function value(a:(string|number)):(number|string){
+// return a;
+// }
+
+// console.log(value(10));
+// console.log(value("rohit"));
+
+// //or
+
+// function value1<T>(a:T):T{
+//     return a;
+// }
+// console.log(value<number>(10));
+// console.log(value<string>("end"));
+
+// interface admin<T>{
+//     name:string;
+//     age:number,
+//     addhar:T
+// }
+// const obj1:admin<number>={
+//     name:"kan",
+//     age:20,
+//     addhar:33
+// }
+// const obj2:admin<string>={
+//     name:"ansh",
+//     age:33,
+//     addhar:"end"
+// }
