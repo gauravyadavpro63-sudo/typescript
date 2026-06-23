@@ -68,3 +68,42 @@
 
 //typescript is transpiler(convert from one language to another)
 
+//  let obj:{name:string,class:number}={
+//     name:"kaneki",
+//     class:3
+//  }
+
+// let person :{name:string,age:number};
+// person={
+//     name:"gaurav",
+//     age:32
+// }
+
+// type customer={
+//     name:string,
+//     age:number
+// }
+
+// let c1:customer={
+//     name:"rohit",
+//     age:12
+// }
+
+// best way to create object
+// interface admin {
+//     name:string,
+//     age:number,
+//     position:string
+// }
+// interface admin{
+//     id:number
+// }
+
+// let obj:admin={
+//     name:"rohit",
+//     age:32,
+//     position:"manaer",
+//     id:322
+// }
+
+// thats why interface is stronger and optimised
