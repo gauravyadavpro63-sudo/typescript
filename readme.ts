@@ -93,7 +93,8 @@
 // interface admin {
 //     name:string,
 //     age:number,
-//     position:string
+//     position:string,
+//     aadhar?:number (this will be optional ,isko object me liko ya na likho)
 // }
 // interface admin{
 //     id:number
@@ -107,3 +108,83 @@
 // }
 
 // thats why interface is stronger and optimised
+
+
+// interface customer{
+//     name:string,
+//     age:number,
+//     balance:number
+// }
+ 
+// let obj:Partial<customer>={// ab chahe name age balance likho ya na likho
+//     name:"gaurav"
+// }
+
+// Required<customer> ab kise ko bhi chor nhi sakte
+// Readonly<customer> ab properties ko sirf read kar sakte hai change nhi
+// obh2.name="mohan" (not allowed)
+
+
+
+// array of object
+// interface people {name:string,age:number};
+//interface account {money:number}
+// const arr:(people|account)[]=[{name:"rohit",age:20},{name:"mohit",age:18},{money:32}]
+
+
+
+// function in ts
+
+// function greet(a:number):number{
+//     console.log(a);
+//     return a+5;
+// }
+// greet(10);
+
+// function meet(msg:string,val:number):void{
+//     console.log(msg,val);
+// }
+// meet("ansi",23);
+
+
+// function neet(msg:string="jitu"){
+//     console.log(msg);
+// }
+// neet(); jitu print hoga
+// neet("bittu")
+
+// function gate(person?:string){
+//     console.log(person||"mohan");
+// }
+// gate("rohit");
+// gate();
+
+
+// arrow function
+
+// const sum=(a:number,b:number):number=>{
+// return a+b;
+// }
+// console.log(sum(3,5));
+
+
+// callback function
+// type chill=(amount:number)=>void;
+// function placeorder(order:number,callback:chill){
+//   const amount=order+10;
+//   callback(amount);
+
+// }
+// placeorder(13,(amount)=>{
+//     console.log(amount);
+// })
+
+// rest parameter
+
+// function total(...arr:number[]):void{
+// let ans=0;
+// arr.forEach((val)=>ans=ans+val);
+// console.log(ans);
+// }
+// total(2,2,1,2,12,5)
+
