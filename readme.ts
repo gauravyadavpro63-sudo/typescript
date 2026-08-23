@@ -6,7 +6,7 @@
 //  this can lead to hard debugging
 // this problem is solved by type script
 
-//  typescript is father of js
+// typescript is father of js
 // typescript is converted into js by compiler
 // becuse out browser dont understand ts
 
@@ -34,15 +34,15 @@
 // tsc --watch (to get live output of ts to js)
 //{ctrl + c} (to exit watch)
 
-// typescript is type inference(acutomatically variable ka type 
+// typescript is type inference(automatically variable ka type 
 // le lega jis data type se initialize kiya hai)
 
-// let money; 
+// let money:any; 
 // money=10; now its type is any like js
 // let val:unknown;(same as any but its safer  because we cannot apply operatin without consuming)
 
 // let val:unknown=12;
-// if(val=="number"){
+// if(type of val=="number"){
 //     console.log(val);
 // }
 
@@ -59,7 +59,8 @@
 // c++-->compile time-->machine code-->runtime-->cpu
 //js was interpreted language(line by line execution)
 //now js is just in time language (combination of compile time and interpreted)
-// The engine first parses the code, then compiles frequently used parts into machine code while the program is running.
+// The engine first parses the code, then compiles frequently used
+//  parts into machine code while the program is running.
 
 //platform dependent language
 //c++ is pdl as it produce machine code 
@@ -240,6 +241,49 @@
 
 // const e1=new customer2(420,"rohit",20,222);
 
+// class Customer {
+//     public name: string;
+//     private age: number;
+//     protected balance: number;
+
+//     constructor(name: string, age: number, balance: number) {
+//         this.name = name;
+//         this.age = age;
+//         this.balance = balance;
+//     }
+
+//     showCustomerData() {
+//         console.log(this.name);    // ✅ public
+//         console.log(this.age);     // ✅ private
+//         console.log(this.balance); // ✅ protected
+//     }
+// }
+
+// class PremiumCustomer extends Customer {
+
+//     constructor(name: string, age: number, balance: number) {
+//         super(name, age, balance);
+//     }
+
+//     showData() {
+//         console.log(this.name);    // ✅ public
+//         console.log(this.age);     // ❌ private
+//         console.log(this.balance); // ✅ protected   {5000}
+//     }
+// }
+
+// const customer = new PremiumCustomer("Kaneki", 20, 5000);
+
+// // Outside the class:
+// console.log(customer.name);    // ✅ public
+// console.log(customer.age);     // ❌ private
+// console.log(customer.balance); // ❌ protected
+
+// customer.showCustomerData(); // ✅
+// customer.showData();         // ✅
+
+
+
 
 // generics
 
@@ -252,11 +296,14 @@
 
 // //or
 
-// function value1<T>(a:T):T{
+// function value<T>(a:T):T{
 //     return a;
 // }
 // console.log(value<number>(10));
 // console.log(value<string>("end"));
+
+
+
 
 // interface admin<T>{
 //     name:string;
@@ -273,3 +320,158 @@
 //     age:33,
 //     addhar:"end"
 // }
+
+
+
+// Absolutely, Kaneki 😎. Generics are one of the most important TypeScript concepts.
+
+// The simplest way to think about generics is:
+
+// Generics let you write code that works with different types while still keeping type safety.
+
+// Start with a normal function
+// function identity(value: number): number {
+//     return value;
+// }
+
+// This only accepts numbers:
+
+// identity(10);       // ✅
+// identity("hello");  // ❌
+
+// You could make another function for strings:
+
+// function identityString(value: string): string {
+//     return value;
+// }
+
+// But that's repetitive.
+
+// Generic solves this
+// function identity<T>(value: T): T {
+//     return value;
+// }
+
+// Here T is a type parameter.
+
+// You can think of T as:
+
+// "I'll tell you the type when I use this function."
+
+// So:
+
+// identity<number>(10);
+
+// means:
+
+// T = number
+
+// and:
+
+// identity<string>("hello");
+
+// means:
+
+// T = string
+
+// The same function works for both.
+
+// const a = identity<number>(10);       // number
+// const b = identity<string>("hello");  // string
+// TypeScript can usually figure out T itself
+
+// You don't even have to write <number>:
+
+// const a = identity(10);
+// const b = identity("hello");
+
+// TypeScript sees:
+
+// identity(10)
+//       ↓
+// T = number
+
+// identity("hello")
+//       ↓
+// T = string
+
+// That's called type inference.
+
+// Why not just use any?
+
+// You might think:
+
+// function identity(value: any): any {
+//     return value;
+// }
+
+// This also accepts everything.
+
+// But any throws away useful type information.
+
+// With generics:
+
+// function identity<T>(value: T): T {
+//     return value;
+// }
+
+// const x = identity("hello");
+
+// TypeScript knows:
+
+// x → string
+
+// So:
+
+// x.toUpperCase(); // ✅
+// x.toFixed();     // ❌
+
+// With any, TypeScript wouldn't protect you properly.
+
+// Generic arrays
+
+// You'll see this a LOT:
+
+// function getFirst<T>(arr: T[]): T {
+//     return arr[0];
+// }
+
+// Now:
+
+// const x = getFirst([10, 20, 30]);
+
+// TypeScript understands:
+
+// T = number
+// x = number
+
+// And:
+
+// const y = getFirst(["a", "b", "c"]);
+
+// gives:
+
+// T = string
+// y = string
+// The mental model 🧠
+
+// Don't think:
+
+// T = some actual type
+
+// Think:
+
+// T = "placeholder for a type"
+
+// function identity<T>(value: T): T
+//                    ↑       ↑
+//                 same type  same type
+
+// Whatever type goes in, the same type comes out.
+
+// number → T → number
+// string → T → string
+// boolean → T → boolean
+
+// That's the basic idea of generics. Once you understand this,
+//  generic arrays, interfaces, classes, and constraints become much easier. 🔥
